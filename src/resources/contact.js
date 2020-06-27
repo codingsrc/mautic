@@ -59,6 +59,14 @@ class Contact {
   listSegments (contactId) {
     return this.client.get(`contacts/${contactId}/segments`)
   }
+
+  addDoNotContact (contactId, channel = 'email') {
+    return this.client.post(`contacts/${contactId}/dnc/${channel}/add`)
+  }
+
+  removeDoNotContact (contactId, channel = 'email') {
+    return this.client.post(`contacts/${contactId}/dnc/${channel}/remove`)
+  }
 }
 
 module.exports = Contact
