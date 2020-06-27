@@ -60,12 +60,12 @@ class Contact {
     return this.client.get(`contacts/${contactId}/segments`)
   }
 
-  addDoNotContact (contactId, channel = 'email') {
-    return this.client.post(`contacts/${contactId}/dnc/${channel}/add`)
+  addDoNotContact (contactId, data, channel = 'email') {
+    return this.client.post(`contacts/${contactId}/dnc/${channel}/add`, data)
   }
 
-  removeDoNotContact (contactId, channel = 'email') {
-    return this.client.post(`contacts/${contactId}/dnc/${channel}/remove`)
+  removeDoNotContact (contactId, data, channel = 'email') {
+    return this.client.post(`contacts/${contactId}/dnc/${channel}/remove`, data)
   }
 }
 
