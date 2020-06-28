@@ -1,9 +1,9 @@
 const Mautic = require('./../src/index')
 const client = new Mautic({
-  baseUrl: process.env.MAUTIC_API_ENDPOINT,
+  baseUrl: 'http://mautic-instance/api',
   auth: {
-    username: process.env.MAUTIC_USERNAME,
-    password: process.env.MAUTIC_PASSWORD
+    username: 'luiz',
+    password: 'shhhhhhhhhhhhhh!:x'
   }
 })
 

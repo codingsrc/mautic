@@ -3,28 +3,28 @@ require('dotenv').config()
 const nock = require('nock')
 const Mautic = require('../../src/index')
 const client = new Mautic({
-  baseUrl: process.env.MAUTIC_API_ENDPOINT,
+  baseUrl: 'http://mautic-instance/api',
   auth: {
-    username: process.env.MAUTIC_USERNAME,
-    password: process.env.MAUTIC_PASSWORD
+    username: 'luiz',
+    password: 'shhhhhhhhhhhhhh!:x'
   }
 })
 
 describe('tag', () => {
   it('should get tags by id', async () => {
-    nock(process.env.MAUTIC_API_ENDPOINT).get('/tags/1').reply(200, {})
+    nock('http://mautic-instance/api').get('/tags/1').reply(200, {})
     const response = await client.tags.get(1)
     expect(response.status).toBe(200)
   })
 
   it('should list tags', async () => {
-    nock(process.env.MAUTIC_API_ENDPOINT).get('/tags').reply(200, {})
+    nock('http://mautic-instance/api').get('/tags').reply(200, {})
     const response = await client.tags.list()
     expect(response.status).toBe(200)
   })
 
   it('should create a new tag', async () => {
-    nock(process.env.MAUTIC_API_ENDPOINT).post('/tags/new').reply(201, {})
+    nock('http://mautic-instance/api').post('/tags/new').reply(201, {})
     const response = await client.tags.create({
       tag: 'test'
     })
@@ -32,7 +32,7 @@ describe('tag', () => {
   })
 
   it('should edit or create a tag', async () => {
-    nock(process.env.MAUTIC_API_ENDPOINT).put('/tags/2/edit').reply(200, {})
+    nock('http://mautic-instance/api').put('/tags/2/edit').reply(200, {})
     const response = await client.tags.editOrCreate(2, {
       tag: 'test2'
     })
@@ -40,7 +40,7 @@ describe('tag', () => {
   })
 
   it('should edit given tag', async () => {
-    nock(process.env.MAUTIC_API_ENDPOINT).patch('/tags/2/edit').reply(200, {})
+    nock('http://mautic-instance/api').patch('/tags/2/edit').reply(200, {})
     const response = await client.tags.edit(2, {
       tag: 'test2_edited'
     })
@@ -48,7 +48,9 @@ describe('tag', () => {
   })
 
   it('should delete given tag', async () => {
-    nock(process.env.MAUTIC_API_ENDPOINT).delete('/tags/3/delete').reply(200, {})
+    nock('http://mautic-instance/api')
+      .delete('/tags/3/delete')
+      .reply(200, {})
     const response = await client.tags.delete(3)
     expect(response.status).toBe(200)
   })
