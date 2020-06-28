@@ -2,7 +2,8 @@ const axios = require('axios')
 const {
   Contact,
   Segment,
-  Company
+  Company,
+  Tags
 } = require('./resources')
 
 const responseWith = (response) => ({
@@ -25,6 +26,7 @@ class Client {
     this.contacts = new Contact(this)
     this.segments = new Segment(this)
     this.companies = new Company(this)
+    this.tags = new Tags(this)
   }
 
   get (resourceUri, params = {}) {
