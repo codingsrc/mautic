@@ -1,7 +1,8 @@
 name: NPM Publish Package
 on:
-  release:
-    types: [published]
+  create:
+    tags:
+      - v*
 
 jobs:
   build:
