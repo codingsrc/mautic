@@ -8,8 +8,8 @@ class Basic {
     return this.client.get(`${this.endpoint}/${id}`)
   }
 
-  list (data = {}) {
-    return this.client.get(`${this.endpoint}/`, data)
+  list (params = {}) {
+    return this.client.get(`${this.endpoint}`, params)
   }
 
   create (data) {
