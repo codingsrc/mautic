@@ -1,5 +1,9 @@
 const axios = require('axios')
-const { Contact, Segment, Company } = require('./resources')
+const {
+  Contact,
+  Segment,
+  Company
+} = require('./resources')
 
 const responseWith = (response) => ({
   status: response.status,
@@ -24,135 +28,39 @@ class Client {
   }
 
   get (resourceUri, params = {}) {
-    return axios
-      .get(`${this.baseUrl}/${resourceUri}`, {
-        params: params,
-        headers: this.headers,
-        auth: this.auth
-      })
-      .then(responseWith)
-      .catch(responseErrWith)
+    return axios.get(`${this.baseUrl}/${resourceUri}`, {
+      params: params,
+      headers: this.headers,
+      auth: this.auth
+    }).then(responseWith).catch(responseErrWith)
   }
 
   post (resourceUri, payload = {}) {
-    return axios
-      .post(`${this.baseUrl}/${resourceUri}`, payload, {
-        headers: this.headers,
-        auth: this.auth
-      })
-      .then(responseWith)
-      .catch(responseErrWith)
+    return axios.post(`${this.baseUrl}/${resourceUri}`, payload, {
+      headers: this.headers,
+      auth: this.auth
+    }).then(responseWith).catch(responseErrWith)
   }
 
   put (resourceUri, payload) {
-    return axios
-      .put(`${this.baseUrl}/${resourceUri}`, payload, {
-        headers: this.headers,
-        auth: this.auth
-      })
-      .then(responseWith)
-      .catch(responseErrWith)
+    return axios.put(`${this.baseUrl}/${resourceUri}`, payload, {
+      headers: this.headers,
+      auth: this.auth
+    }).then(responseWith).catch(responseErrWith)
   }
 
   patch (resourceUri, payload) {
-    return axios
-      .patch(`${this.baseUrl}/${resourceUri}`, payload, {
-        headers: this.headers,
-        auth: this.auth
-      })
-      .then(responseWith)
-      .catch(responseErrWith)
+    return axios.patch(`${this.baseUrl}/${resourceUri}`, payload, {
+      headers: this.headers,
+      auth: this.auth
+    }).then(responseWith).catch(responseErrWith)
   }
 
   delete (resourceUri) {
-    return axios
-      .delete(`${this.baseUrl}/${resourceUri}`, {
-        headers: this.headers,
-        auth: this.auth
-      })
-      .then(responseWith)
-      .catch(responseErrWith)
-  }
-}
-
-class ClientOAuth2 {
-  constructor ({ baseUrl, auth, redirectUri, code }) {
-    this.auth = auth
-    this.baseUrl = baseUrl
-    this.redirectUri = redirectUri
-    this.headers = {
-      'User-Agent': 'mautic/0.0.1 - unofficial node bindings'
-    }
-    this.contacts = new Contact(this)
-    this.segments = new Segment(this)
-    this.companies = new Company(this)
-  }
-
-  auth () {
-    const params = {
-      client_id: this.auth.client_id,
-      client_secret: this.auth.client_secret,
-      grant_type: 'authorization_code',
-      redirect_uri: this.redirectUri,
-      code: this.code
-    }
-    // axios.post(this.baseUrl)
-    // TODO: wait for code input and add
-  }
-
-  refreshToken () {
-    // TODO: refresh token
-  }
-
-  get (resourceUri, params = {}) {
-    return axios
-      .get(`${this.baseUrl}/${resourceUri}`, {
-        params: params,
-        headers: this.headers,
-        auth: this.auth
-      })
-      .then(responseWith)
-      .catch(responseErrWith)
-  }
-
-  post (resourceUri, payload = {}) {
-    return axios
-      .post(`${this.baseUrl}/${resourceUri}`, payload, {
-        headers: this.headers,
-        auth: this.auth
-      })
-      .then(responseWith)
-      .catch(responseErrWith)
-  }
-
-  put (resourceUri, payload) {
-    return axios
-      .put(`${this.baseUrl}/${resourceUri}`, payload, {
-        headers: this.headers,
-        auth: this.auth
-      })
-      .then(responseWith)
-      .catch(responseErrWith)
-  }
-
-  patch (resourceUri, payload) {
-    return axios
-      .patch(`${this.baseUrl}/${resourceUri}`, payload, {
-        headers: this.headers,
-        auth: this.auth
-      })
-      .then(responseWith)
-      .catch(responseErrWith)
-  }
-
-  delete (resourceUri) {
-    return axios
-      .delete(`${this.baseUrl}/${resourceUri}`, {
-        headers: this.headers,
-        auth: this.auth
-      })
-      .then(responseWith)
-      .catch(responseErrWith)
+    return axios.delete(`${this.baseUrl}/${resourceUri}`, {
+      headers: this.headers,
+      auth: this.auth
+    }).then(responseWith).catch(responseErrWith)
   }
 }
 

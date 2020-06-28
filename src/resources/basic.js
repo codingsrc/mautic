@@ -25,7 +25,7 @@ class Basic {
   }
 
   delete (id) {
-    return this.client.put(`${this.endpoint}/${id}/delete`)
+    return this.client.delete(`${this.endpoint}/${id}/delete`)
   }
 }
 
