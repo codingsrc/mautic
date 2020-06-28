@@ -1,5 +1,5 @@
 {
-  "name": "mautic",
+  "name": "mautic-api",
   "version": "0.0.6",
   "description": "Unofficial Node.js bindings to the Mautic REST API - https://developer.mautic.org/#rest-api",
   "main": "src/index.js",
@@ -14,14 +14,18 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/FieldControl/mautic.git"
+    "url": "git+https://github.com/codingsrc/mautic.git"
   },
   "author": "Luiz Freneda <luiz@fieldcontrol.com.br> (https://fieldcontrol.com.br)",
+  "contributors": [{
+    "name": "Rangel Stoilov",
+    "email": "rangelstoilov@gmail.com"
+  }],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/FieldControl/mautic/issues"
+    "url": "https://github.com/codingsrc/mautic/issues"
   },
-  "homepage": "https://github.com/FieldControl/mautic#readme",
+  "homepage": "https://github.com/codingsrc/mautic#readme",
   "devDependencies": {
     "dotenv": "^8.2.0",
     "eslint": "6.8.0",
