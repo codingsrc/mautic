@@ -1,6 +1,8 @@
-class Segment {
+const Basic = require('./basic')
+
+class Segment extends Basic {
   constructor (client) {
-    this.client = client
+    super(client, 'segments')
   }
 
   addContact (segmentId, contactId) {
@@ -8,7 +10,9 @@ class Segment {
   }
 
   removeContact (segmentId, contactId) {
-    return this.client.post(`segments/${segmentId}/contact/${contactId}/remove`)
+    return this.client.post(
+      `segments/${segmentId}/contact/${contactId}/remove`
+    )
   }
 }
 

@@ -1,31 +1,8 @@
-class Contact {
+const Basic = require('./basic')
+
+class Contact extends Basic {
   constructor (client) {
-    this.client = client
-  }
-
-  get (contactId) {
-    return this.client.get(`contacts/${contactId}`)
-  }
-
-  list (params = {}) {
-    return this.client.get('contacts', params)
-  }
-
-  create (contact) {
-    delete contact.id
-    return this.client.post('contacts/new', contact)
-  }
-
-  edit (contactId, contact) {
-    return this.client.patch(`contacts/${contactId}/edit`, contact)
-  }
-
-  editOrCreate (contactId, contact) {
-    return this.client.put(`contacts/${contactId}/edit`, contact)
-  }
-
-  delete (contactId) {
-    return this.client.delete(`contacts/${contactId}/delete`)
+    super(client, 'contacts')
   }
 
   addPoints (contactId, points, data = { eventname: undefined, eventaction: undefined }) {
